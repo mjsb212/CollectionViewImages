@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:CollectionViewImages.Models;assembly=CollectionViewImages"
+             xmlns:vm="clr-namespace:CollectionViewImages.ViewModels;assembly=CollectionViewImages"             
+             x:Class="CollectionViewImages.CollectionViewGrid"
+             x:DataType="vm:GroupedImagesViewModel">
+    <Grid>
+
+    <CollectionView x:Name="CollView" IsGrouped="true" ItemsSource="{Binding Images}"  CanReorderItems="True" CanMixGroups="True">
+
+        <CollectionView.ItemsLayout>
+            
+            <GridItemsLayout  Orientation="Vertical"                                
+                              SnapPointsType="None"
+                              HorizontalItemSpacing="3"
+                              VerticalItemSpacing="3"
+                              SnapPointsAlignment="Center"
+                              Span="3"/>
+            
+        </CollectionView.ItemsLayout>
+
+        <CollectionView.GroupHeaderTemplate>
+            <DataTemplate x:DataType="local:ImageGroup">
+
+                <Grid HeightRequest="30">
+
+                    <Label Text="{Binding Name}" />
+
+                </Grid>
+            </DataTemplate>
+        </CollectionView.GroupHeaderTemplate>
+
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="local:Image">
+
+                <Image HorizontalOptions="Center" 
+                         HeightRequest="120"
+                         WidthRequest="120"
+                         Aspect="AspectFill">
+                    <Image.Source>
+                        <UriImageSource Uri="{Binding ImageUrl, Mode=OneTime}"                                            
+                      CacheValidity="10:00:00:00" />
+                    </Image.Source>
+                </Image>
+
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+
+    </CollectionView>
+    
+     </Grid>
+
+</ContentPage>
