@@ -13,7 +13,7 @@ namespace CollectionViewImages
         {
             InitializeComponent();
 
-            // Randomly generate a Grouped list of Images with 100 Groups
+            // Randomly generate a Grouped list of Images with 500 Groups
 
             Random rnd = new Random();            
 
